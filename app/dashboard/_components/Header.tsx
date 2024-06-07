@@ -1,16 +1,12 @@
 "use client";
 
+import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
 
 export default function Header() {
   const path = usePathname();
-
-  useEffect(() => {
-    console.log(path);
-  }, []);
 
   return (
     <div className="flex p-4 items-center justify-between bg-secondary shadow-sm">
@@ -52,6 +48,9 @@ export default function Header() {
             `}
         >
           How it Works?
+        </li>
+        <li>
+          <UserButton />
         </li>
       </ul>
     </div>
