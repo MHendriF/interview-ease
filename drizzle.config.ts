@@ -1,10 +1,10 @@
 import { defineConfig } from "drizzle-kit";
 import * as dotenv from "dotenv";
 import { requireEnvVariable } from "@/lib/env";
-
 dotenv.config({ path: ".env.local" });
 
-const DRIZZLE_DB_URL = requireEnvVariable("DRIZZLE_DB_URL");
+const DRIZZLE_DB_URL = requireEnvVariable("NEXT_PUBLIC_DRIZZLE_DB_URL");
+//console.log("🚀 ~ DRIZZLE_DB_URL:", DRIZZLE_DB_URL)
 
 export default defineConfig({
   schema: "./utils/schema.ts",
