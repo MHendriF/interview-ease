@@ -99,7 +99,7 @@ export default function CreateInterview() {
       <Dialog open={openDialog}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle className="text-2xl">Tell us more about your job interviwing</DialogTitle>
+            <DialogTitle className="text-2xl">Tell us more about your job interviewing</DialogTitle>
             <DialogDescription>
               <form onSubmit={handleSubmit}>
                 <div>

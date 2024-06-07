@@ -24,7 +24,6 @@ export default function Feedback(props: any) {
       .from(UserAnswer)
       .where(eq(UserAnswer.mockIdRef, params.interviewId))
       .orderBy(UserAnswer.id);
-    console.log("🚀 ~ getFeedback ~ result:", result);
     setFeedbackList(result);
   };
 

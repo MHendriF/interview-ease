@@ -1,5 +1,6 @@
 import React from "react";
 import CreateInterview from "./_components/CreateInterview";
+import InterviewList from "./_components/InterviewList";
 
 export default function Dashboard(props: any) {
   const { children } = props;
@@ -13,6 +14,7 @@ export default function Dashboard(props: any) {
       </div>
 
       {/* Previous Interview List  */}
+      <InterviewList />
     </div>
   );
 }
