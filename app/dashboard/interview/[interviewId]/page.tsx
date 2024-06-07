@@ -9,6 +9,8 @@ import { Lightbulb, WebcamIcon } from "lucide-react";
 import Link from "next/link";
 import Webcam from "react-webcam";
 
+type InterviewProps = {};
+
 export default function Interview({ params }: any) {
   const [interview, setInterview] = useState();
   const [isWebCamEnabled, setIsWebCamEnabled] = useState(false);
@@ -18,9 +20,6 @@ export default function Interview({ params }: any) {
     getInterviewDetail();
   }, []);
 
-  /**
-   * Used to Get Interview Details by MockId/Interview Id
-   */
   const getInterviewDetail = async () => {
     const result = await db.select().from(MockInterview).where(eq(MockInterview.mockId, params.interviewId));
     console.log("🚀 ~ getInterviewDetail ~ result:", result);
@@ -82,7 +81,7 @@ export default function Interview({ params }: any) {
         </div>
       </div>
       <div className="flex justify-end items-end">
-        <Link href={"/dashboard/interview/" + params.interviewId + "/start"}>
+        <Link href={`/dashboard/interview/${params.interviewId}/start`}>
           <Button>Start Interview</Button>
         </Link>
       </div>
