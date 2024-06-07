@@ -1,7 +1,8 @@
 import React from "react";
 import CreateInterview from "./_components/CreateInterview";
 
-export default function Dashboard({ children }: any) {
+export default function Dashboard(props: any) {
+  const { children } = props;
   return (
     <div className="p-10">
       <h2 className="font-bold text-3xl text-primary">Dashboard</h2>

@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import useSpeechToText from "react-hook-speech-to-text";
 import { Mic, StopCircle } from "lucide-react";
@@ -12,10 +12,11 @@ import { UserAnswer } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment";
 
-export default function RecordAnswer({ questions, activeQuestionIndex, interview }) {
+export default function RecordAnswer(props: any) {
+  const { questions, activeQuestionIndex, interview } = props;
   const [userAnswer, setUserAnswer] = useState("");
   const { user } = useUser();
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { error, interimResult, isRecording, results, startSpeechToText, stopSpeechToText, setResults } =
     useSpeechToText({
       continuous: false,
@@ -42,7 +43,8 @@ export default function RecordAnswer({ questions, activeQuestionIndex, interview
 
   const UpdateUserAnswer = async () => {
     console.log(userAnswer);
-    setLoading(true);
+    setIsLoading(true);
+
     const feedbackPrompt =
       "Question:" +
       questions[activeQuestionIndex]?.question +
@@ -52,28 +54,32 @@ export default function RecordAnswer({ questions, activeQuestionIndex, interview
       " please give us rating for answer and feedback as area of improvement if any " +
       "in just 3 to 5 lines to improve it in JSON format with rating field and feedback field";
 
-    const result = await chatSession.sendMessage(feedbackPrompt);
-    const mockJsonResponse = result.response.text().replace("```json", "").replace("```", "");
-    const JsonFeedbackResponse = JSON.parse(mockJsonResponse);
-    const resp = await db.insert(UserAnswer).values({
-      mockIdRef: interview?.mockId,
-      question: questions[activeQuestionIndex]?.question,
-      correctAnswer: questions[activeQuestionIndex]?.answer,
-      userAnswer: userAnswer,
-      feedback: JsonFeedbackResponse?.feedback,
-      rating: JsonFeedbackResponse?.rating,
-      userEmail: user?.primaryEmailAddress?.emailAddress,
-      createdAt: moment().format("DD-MM-yyyy"),
-    });
+    try {
+      const result = await chatSession.sendMessage(feedbackPrompt);
+      const mockJsonResponse = result.response.text().replace("```json", "").replace("```", "");
+      const JsonFeedbackResponse = JSON.parse(mockJsonResponse);
+      const resp = await db.insert(UserAnswer).values({
+        mockIdRef: interview?.mockId,
+        question: questions[activeQuestionIndex]?.question,
+        correctAnswer: questions[activeQuestionIndex]?.answer,
+        userAnswer: userAnswer,
+        feedback: JsonFeedbackResponse?.feedback,
+        rating: JsonFeedbackResponse?.rating,
+        userEmail: user?.primaryEmailAddress?.emailAddress,
+        createdAt: moment().format("DD-MM-yyyy"),
+      });
 
-    if (resp) {
-      toast("User Answer recorded successfully");
-      setUserAnswer("");
+      if (resp) {
+        toast("User Answer recorded successfully");
+        setUserAnswer("");
+        setResults([]);
+      }
+    } catch (error) {
+      console.log("🚀 ~ UpdateUserAnswer ~ error:", error);
+    } finally {
       setResults([]);
+      setIsLoading(false);
     }
-    setResults([]);
-
-    setLoading(false);
   };
 
   return (
@@ -89,7 +95,7 @@ export default function RecordAnswer({ questions, activeQuestionIndex, interview
           }}
         />
       </div>
-      <Button disabled={loading} variant="outline" className="my-10" onClick={StartStopRecording}>
+      <Button disabled={isLoading} variant="outline" className="my-10" onClick={StartStopRecording}>
         {isRecording ? (
           <h2 className="text-red-600 animate-pulse flex gap-2 items-center">
             <StopCircle />

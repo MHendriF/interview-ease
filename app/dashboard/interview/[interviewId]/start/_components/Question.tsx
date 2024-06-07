@@ -1,6 +1,7 @@
 import { Lightbulb, Volume2 } from "lucide-react";
 
-export default function Question({ questions, activeQuestionIndex }) {
+export default function Question(props: any) {
+  const { questions, activeQuestionIndex } = props;
   const handleTextToSpeech = (text: string) => {
     if ("speechSynthesis" in window) {
       const speech = new SpeechSynthesisUtterance(text);
@@ -15,7 +16,7 @@ export default function Question({ questions, activeQuestionIndex }) {
       <div className="p-5 border rounded-lg my-10">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {questions &&
-            questions.map((question, index) => (
+            questions.map((question: any, index: any) => (
               <h2
                 key={index}
                 className={`p-2 border rounded-full

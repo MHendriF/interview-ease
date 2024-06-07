@@ -8,9 +8,10 @@ import RecordAnswer from "./_components/RecordAnswer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function Start({ params }) {
-  const [interview, setInterview] = useState();
-  const [questions, setQuestions] = useState();
+export default function Start(props: any) {
+  const { params } = props;
+  const [interview, setInterview] = useState<any>();
+  const [questions, setQuestions] = useState<any>();
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
 
   useEffect(() => {
@@ -19,15 +20,14 @@ export default function Start({ params }) {
   }, []);
 
   const getInterviewDetail = async () => {
-    const result = await db.select().from(MockInterview).where(eq(MockInterview.mockId, params.interviewId));
-    console.log("🚀 ~ getInterviewDetail ~ result:", result);
+    const result: any = await db.select().from(MockInterview).where(eq(MockInterview.mockId, params.interviewId));
     const jsonMockResponse = JSON.parse(result[0].jsonMockResponse);
     setQuestions(jsonMockResponse);
     setInterview(result[0]);
   };
 
   return (
-    <div>
+    <div className="mb-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Questions  */}
         <Question questions={questions} activeQuestionIndex={activeQuestionIndex} />

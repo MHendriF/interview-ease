@@ -113,7 +113,7 @@ export default function CreateInterview() {
                       onChange={(e) => setJobPosition(e.target.value)}
                     />
                   </div>
-                  <div className=" my-3">
+                  <div className="my-3">
                     <label>Job Description/ Tech Stack (In Short)</label>
                     <Textarea
                       placeholder="Ex. React, Angular, NodeJs, MySql etc"
@@ -121,7 +121,7 @@ export default function CreateInterview() {
                       onChange={(e) => setJobDescription(e.target.value)}
                     />
                   </div>
-                  <div className=" my-3">
+                  <div className="my-3">
                     <label>Years of experience</label>
                     <Input
                       placeholder="Ex.5"

@@ -1,7 +1,8 @@
 import React from "react";
 import Header from "./_components/Header";
 
-export default function DashboardLayout({ children }: any) {
+export default function DashboardLayout(props: any) {
+  const { children } = props;
   return (
     <div>
       <Header />
