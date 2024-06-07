@@ -20,7 +20,7 @@ import { useUser } from "@clerk/nextjs";
 import moment from "moment";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
 
 export default function CreateInterview() {
   const [openDialog, setOpenDialog] = useState(false);
@@ -31,7 +31,6 @@ export default function CreateInterview() {
   const [jsonResponse, setJsonResponse] = useState([]);
   const router = useRouter();
   const { user } = useUser();
-  const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
@@ -71,28 +70,16 @@ export default function CreateInterview() {
 
         console.log("Inserted ID:", res);
         if (res) {
-          toast({
-            title: "Success",
-            description: "Create Interview Success",
-            variant: "success",
-          });
+          toast("Create interview successfully");
           setOpenDialog(false);
           router.push(`/dashboard/interview/${res[0].mockId}`);
         }
       } else {
-        toast({
-          title: "Error",
-          description: "Something went wrong",
-          variant: "destructive",
-        });
+        toast("Create interview failed");
         console.log("error in creating interview");
       }
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "error",
-        variant: "destructive",
-      });
+      toast("Error");
       console.log(error);
     } finally {
       setLoading(false);

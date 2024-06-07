@@ -1,7 +1,7 @@
 import { Lightbulb, Volume2 } from "lucide-react";
 
 export default function Question({ questions, activeQuestionIndex }) {
-  const textToSpeech = (text: string) => {
+  const handleTextToSpeech = (text: string) => {
     if ("speechSynthesis" in window) {
       const speech = new SpeechSynthesisUtterance(text);
       window.speechSynthesis.speak(speech);
@@ -27,7 +27,10 @@ export default function Question({ questions, activeQuestionIndex }) {
             ))}
         </div>
         <h2 className="my-5 text-md md:text-lg">{questions[activeQuestionIndex]?.question}</h2>
-        <Volume2 className="cursor-pointer" onClick={() => textToSpeech(questions[activeQuestionIndex]?.question)} />
+        <Volume2
+          className="cursor-pointer"
+          onClick={() => handleTextToSpeech(questions[activeQuestionIndex]?.question)}
+        />
 
         <div className="border rounded-lg p-5 bg-blue-100 mt-20 ">
           <h2 className="flex gap-2 items-center text-primary">
