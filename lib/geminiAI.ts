@@ -9,7 +9,12 @@
 
 const { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } = require("@google/generative-ai");
 
-const apiKey = process.env.GEMINI_API_KEY;
+import * as dotenv from "dotenv";
+import { requireEnvVariable } from "@/lib/env";
+dotenv.config({ path: ".env.local" });
+const apiKey = requireEnvVariable("GEMINI_API_KEY");
+console.log("🚀 ~ apiKey:", apiKey);
+
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
