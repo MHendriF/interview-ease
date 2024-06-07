@@ -51,7 +51,6 @@ export default function CreateInterview() {
     try {
       const result = await chatSession.sendMessage(InputPrompt);
       const MockJsonResponse = result.response.text().replace("```json", "").replace("```", "");
-      console.log("🚀 ~ handleSubmit ~ MockJsonResponse:", MockJsonResponse);
       setJsonResponse(MockJsonResponse);
 
       if (MockJsonResponse) {

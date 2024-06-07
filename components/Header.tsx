@@ -22,33 +22,37 @@ export default function Header() {
             Dashboard
           </li>
         </Link>
-
-        <li
-          className={`hover:text-primary hover:font-bold transition-all
-            cursor-pointer
-            ${path == "/dashboard/questions" && "text-primary font-bold"}
-            `}
-        >
-          Questions
-        </li>
-        <Link href={"/dashboard/upgrade"}>
+        <Link href={"/questions"}>
           <li
             className={`hover:text-primary hover:font-bold transition-all
             cursor-pointer
-            ${path == "/dashboard/upgrade" && "text-primary font-bold"}
+            ${path == "/questions" && "text-primary font-bold"}
+            `}
+          >
+            Questions
+          </li>
+        </Link>
+        <Link href={"/upgrade"}>
+          <li
+            className={`hover:text-primary hover:font-bold transition-all
+            cursor-pointer
+            ${path == "/upgrade" && "text-primary font-bold"}
             `}
           >
             Upgrade
           </li>
         </Link>
-        <li
-          className={`hover:text-primary hover:font-bold transition-all
+        <Link href={"/how-it-works"}>
+          <li
+            className={`hover:text-primary hover:font-bold transition-all
             cursor-pointer
-            ${path == "/dashboard/how" && "text-primary font-bold"}
+            ${path == "/how-it-works" && "text-primary font-bold"}
             `}
-        >
-          How it Works?
-        </li>
+          >
+            How it Works?
+          </li>
+        </Link>
+
         <li>
           <UserButton />
         </li>

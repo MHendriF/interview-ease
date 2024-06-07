@@ -24,7 +24,7 @@ export default function RecordAnswer(props: any) {
     });
 
   useEffect(() => {
-    results?.map((result) => setUserAnswer((prevAns) => prevAns + result?.transcript));
+    results?.map((result: any) => setUserAnswer((prevAns) => prevAns + result?.transcript));
   }, [results]);
 
   useEffect(() => {

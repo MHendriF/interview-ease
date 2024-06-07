@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./_components/Header";
+import Header from "../../components/Header";
 
 export default function DashboardLayout(props: any) {
   const { children } = props;
