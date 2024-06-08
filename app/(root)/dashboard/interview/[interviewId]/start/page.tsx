@@ -1,12 +1,15 @@
 "use client";
+
+import { eq } from "drizzle-orm";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+
 import { db } from "@/utils/db";
 import { MockInterview } from "@/utils/schema";
-import { eq } from "drizzle-orm";
-import React, { useEffect, useState } from "react";
+
 import Question from "./_components/Question";
 import RecordAnswer from "./_components/RecordAnswer";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 export default function Start(props: any) {
   const { params } = props;

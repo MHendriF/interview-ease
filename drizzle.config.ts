@@ -1,6 +1,7 @@
-import { defineConfig } from "drizzle-kit";
-import * as dotenv from "dotenv";
 import { requireEnvVariable } from "@/lib/env";
+import * as dotenv from "dotenv";
+import { defineConfig } from "drizzle-kit";
+
 dotenv.config({ path: ".env.local" });
 
 const DRIZZLE_DB_URL = requireEnvVariable("NEXT_PUBLIC_DRIZZLE_DB_URL");

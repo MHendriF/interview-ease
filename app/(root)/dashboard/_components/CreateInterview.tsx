@@ -1,5 +1,18 @@
 "use client";
 
+import { chatSession } from "@/lib/geminiAI";
+import { useUser } from "@clerk/nextjs";
+import { LoaderCircle } from "lucide-react";
+import moment from "moment";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
+import { v4 as uuidv4 } from "uuid";
+
+import { db } from "@/utils/db";
+import { MockInterview } from "@/utils/schema";
+
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -8,19 +21,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { chatSession } from "@/lib/geminiAI";
-import { LoaderCircle } from "lucide-react";
-import { db } from "@/utils/db";
-import { MockInterview } from "@/utils/schema";
-import { v4 as uuidv4 } from "uuid";
-import { useUser } from "@clerk/nextjs";
-import moment from "moment";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { toast } from "sonner";
 
 export default function CreateInterview() {
   const [openDialog, setOpenDialog] = useState(false);

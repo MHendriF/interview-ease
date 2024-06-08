@@ -1,16 +1,19 @@
 "use client";
-import { Button } from "@/components/ui/button";
+
+import { chatSession } from "@/lib/geminiAI";
+import { useUser } from "@clerk/nextjs";
+import { Mic, StopCircle } from "lucide-react";
+import moment from "moment";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Webcam from "react-webcam";
 import useSpeechToText from "react-hook-speech-to-text";
-import { Mic, StopCircle } from "lucide-react";
+import Webcam from "react-webcam";
 import { toast } from "sonner";
-import { chatSession } from "@/lib/geminiAI";
+
 import { db } from "@/utils/db";
 import { UserAnswer } from "@/utils/schema";
-import { useUser } from "@clerk/nextjs";
-import moment from "moment";
+
+import { Button } from "@/components/ui/button";
 
 export default function RecordAnswer(props: any) {
   const { questions, activeQuestionIndex, interview } = props;

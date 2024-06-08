@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { db } from "@/utils/db";
-import { MockInterview } from "@/utils/schema";
 import { eq } from "drizzle-orm";
 import { Lightbulb, WebcamIcon } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import Webcam from "react-webcam";
+
+import { db } from "@/utils/db";
+import { MockInterview } from "@/utils/schema";
+
+import { Button } from "@/components/ui/button";
 
 export default function Interview(props: any) {
   const { params } = props;
