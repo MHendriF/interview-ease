@@ -36,8 +36,7 @@ export default function Page() {
             <div className="relative -mt-16 block lg:hidden">
               <a
                 className="inline-flex size-16 items-center justify-center rounded-full bg-white text-blue-600 sm:size-20"
-                href="#"
-              >
+                href="#">
                 <span className="sr-only">Home</span>
                 <svg className="h-8 sm:h-10" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path

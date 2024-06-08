@@ -31,8 +31,7 @@ export default function PlanItemCard(props: any) {
       <a
         href={plan.paymentLink + "?prefilled_email=" + user?.primaryEmailAddress?.emailAddress}
         target="_blank"
-        className="mt-8 block rounded-full border border-indigo-600 bg-white px-12 py-3 text-center text-sm font-medium text-indigo-600 hover:ring-1 hover:ring-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-      >
+        className="mt-8 block rounded-full border border-indigo-600 bg-white px-12 py-3 text-center text-sm font-medium text-indigo-600 hover:ring-1 hover:ring-indigo-600 focus:outline-none focus:ring active:text-indigo-500">
         Get Started
       </a>
     </div>

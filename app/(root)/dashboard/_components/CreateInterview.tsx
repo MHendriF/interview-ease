@@ -62,7 +62,7 @@ export default function CreateInterview() {
             jobPosition: jobPosition,
             jobDescription: jobDescription,
             jobExperience: jobExperience,
-            createdBy: user?.primaryEmailAddress?.emailAddress,
+            createdBy: user?.primaryEmailAddress?.emailAddress || "",
             createdAt: moment().format("DD-MM-yyyy"),
           })
           .returning({ mockId: MockInterview.mockId });
@@ -91,8 +91,7 @@ export default function CreateInterview() {
         className="p-10 border rounded-lg bg-secondary
         hover:scale-105 hover:shadow-md cursor-pointer
          transition-all border-dashed"
-        onClick={() => setOpenDialog(true)}
-      >
+        onClick={() => setOpenDialog(true)}>
         <h2 className="text-lg text-center">+ Add New</h2>
       </div>
       <Dialog open={openDialog}>

@@ -18,7 +18,7 @@ export default function InterviewList() {
     const result: any = await db
       .select()
       .from(MockInterview)
-      .where(eq(MockInterview.createdBy, user?.primaryEmailAddress?.emailAddress))
+      .where(eq(MockInterview.createdBy, user?.primaryEmailAddress?.emailAddress || ""))
       .orderBy(desc(MockInterview.id));
     setInterviewList(result);
   };

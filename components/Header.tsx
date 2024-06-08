@@ -17,8 +17,7 @@ export default function Header() {
             className={`hover:text-primary hover:font-bold transition-all
             cursor-pointer
             ${path == "/dashboard" && "text-primary font-bold"}
-            `}
-          >
+            `}>
             Dashboard
           </li>
         </Link>
@@ -27,8 +26,7 @@ export default function Header() {
             className={`hover:text-primary hover:font-bold transition-all
             cursor-pointer
             ${path == "/questions" && "text-primary font-bold"}
-            `}
-          >
+            `}>
             Questions
           </li>
         </Link>
@@ -37,8 +35,7 @@ export default function Header() {
             className={`hover:text-primary hover:font-bold transition-all
             cursor-pointer
             ${path == "/upgrade" && "text-primary font-bold"}
-            `}
-          >
+            `}>
             Upgrade
           </li>
         </Link>
@@ -47,8 +44,7 @@ export default function Header() {
             className={`hover:text-primary hover:font-bold transition-all
             cursor-pointer
             ${path == "/how-it-works" && "text-primary font-bold"}
-            `}
-          >
+            `}>
             How it Works?
           </li>
         </Link>

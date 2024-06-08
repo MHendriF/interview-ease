@@ -9,15 +9,12 @@ import { Lightbulb, WebcamIcon } from "lucide-react";
 import Link from "next/link";
 import Webcam from "react-webcam";
 
-type InterviewProps = {};
-
 export default function Interview(props: any) {
   const { params } = props;
   const [interview, setInterview] = useState<any>();
   const [isWebCamEnabled, setIsWebCamEnabled] = useState(false);
 
   useEffect(() => {
-    console.log("🚀 ~ params.interviewId:", params.interviewId);
     getInterviewDetail();
   }, []);
 

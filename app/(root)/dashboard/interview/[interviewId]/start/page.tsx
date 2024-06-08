@@ -15,7 +15,6 @@ export default function Start(props: any) {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
 
   useEffect(() => {
-    console.log("🚀 ~ params.interviewId:", params.interviewId);
     getInterviewDetail();
   }, []);
 
@@ -29,10 +28,7 @@ export default function Start(props: any) {
   return (
     <div className="mb-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        {/* Questions  */}
         <Question questions={questions} activeQuestionIndex={activeQuestionIndex} />
-
-        {/* Video/ Audio Recording  */}
         <RecordAnswer questions={questions} activeQuestionIndex={activeQuestionIndex} interview={interview} />
       </div>
       <div className="flex justify-end gap-6">

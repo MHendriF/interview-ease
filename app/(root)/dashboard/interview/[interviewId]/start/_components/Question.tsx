@@ -21,8 +21,7 @@ export default function Question(props: any) {
                 key={index}
                 className={`p-2 border rounded-full
                     text-xs md:text-sm text-center cursor-pointer
-                    ${activeQuestionIndex == index && "bg-primary text-white"}`}
-              >
+                    ${activeQuestionIndex == index && "bg-primary text-white"}`}>
                 Question #{index + 1}
               </h2>
             ))}
